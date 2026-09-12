@@ -1,0 +1,1183 @@
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f8fafc
+        );
+
+    color: #1e293b;
+
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+#candidate-section,
+#interview-section {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 40px auto;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(15, 23, 42, 0.10);
+}
+
+
+/* =====================================================
+   HEADINGS
+===================================================== */
+
+h1 {
+    margin-top: 0;
+
+    color: #1e3a8a;
+
+    font-size: 32px;
+}
+
+h2 {
+    color: #334155;
+
+    margin-top: 28px;
+
+    font-size: 22px;
+}
+
+h3 {
+    color: #475569;
+}
+
+p {
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   CANDIDATE SECTION
+===================================================== */
+
+#candidate-section {
+    max-width: 650px;
+
+    margin-top: 80px;
+
+    text-align: center;
+}
+
+#candidate-section h1 {
+    font-size: 36px;
+
+    margin-bottom: 10px;
+}
+
+#candidate-section > p {
+    color: #64748b;
+
+    margin-bottom: 35px;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+#candidate-section label {
+    display: block;
+
+    text-align: left;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+
+    color: #334155;
+}
+
+#name,
+#role {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    margin-bottom: 20px;
+
+    background: #f8fafc;
+}
+
+#name:focus,
+#role:focus {
+    border-color: #4f46e5;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(79, 70, 229, 0.12);
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+button {
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 12px 20px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px
+        rgba(15, 23, 42, 0.15);
+}
+
+button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* Start interview */
+
+#candidate-section button {
+    background: #4f46e5;
+
+    color: white;
+
+    width: 100%;
+
+    margin-top: 10px;
+}
+
+#candidate-section button:hover {
+    background: #4338ca;
+}
+
+
+/* Answer button */
+
+#answer-button {
+    background: #16a34a;
+
+    color: white;
+
+    margin-right: 10px;
+}
+
+#answer-button:hover {
+    background: #15803d;
+}
+
+
+/* Stop button */
+
+#stop-button {
+    background: #dc2626;
+
+    color: white;
+}
+
+#stop-button:hover {
+    background: #b91c1c;
+}
+
+
+/* Next button */
+
+#next-button {
+    background: #2563eb;
+
+    color: white;
+
+    margin-top: 20px;
+}
+
+#next-button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =====================================================
+   CAMERA AREA
+===================================================== */
+
+#video {
+    display: block;
+
+    width: 100%;
+
+    max-width: 600px;
+
+    height: auto;
+
+    aspect-ratio: 16 / 9;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    background: #0f172a;
+
+    border: 3px solid #e2e8f0;
+
+    margin: 15px 0;
+}
+
+#camera-status {
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    background: #dcfce7;
+
+    color: #166534;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   QUESTION AREA
+===================================================== */
+
+#question-number {
+    color: #4f46e5;
+
+    margin-bottom: 10px;
+}
+
+#question {
+    background: #f8fafc;
+
+    border-left: 5px solid #4f46e5;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    font-size: 19px;
+
+    font-weight: 600;
+
+    color: #1e293b;
+
+    margin-bottom: 20px;
+}
+
+
+/* =====================================================
+   RECORDING STATUS
+===================================================== */
+
+#recording-status {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    background: #f1f5f9;
+
+    color: #475569;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   AUDIO PLAYER
+===================================================== */
+
+#audio-player {
+    width: 100%;
+
+    max-width: 500px;
+
+    margin: 20px 0;
+}
+
+
+/* =====================================================
+   EVALUATION CARD
+===================================================== */
+
+#evaluation-result {
+    margin-top: 30px;
+
+    padding: 25px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 15px;
+}
+
+#evaluation-result h3 {
+    color: #1e3a8a;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    padding-bottom: 8px;
+}
+
+#transcript {
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    border: 1px solid #e2e8f0;
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   SCORE DISPLAY
+===================================================== */
+
+#answer-score {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 8px;
+
+    background: #dbeafe;
+
+    color: #1d4ed8;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   ANALYSIS VALUES
+===================================================== */
+
+#evaluation-result p {
+    margin: 9px 0;
+}
+
+
+/* =====================================================
+   FINAL REPORT
+===================================================== */
+
+#final-report {
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+#final-report h1:first-child {
+    text-align: center;
+
+    font-size: 36px;
+
+    margin-bottom: 30px;
+}
+
+
+/* Overall score */
+
+#final-report h1:nth-of-type(2) {
+    text-align: center;
+
+    font-size: 52px;
+
+    color: #4f46e5;
+
+    margin: 15px 0;
+}
+
+#final-report h3 {
+    text-align: center;
+
+    color: #16a34a;
+
+    font-size: 20px;
+}
+
+
+/* =====================================================
+   FINAL REPORT SECTIONS
+===================================================== */
+
+#final-report h2 {
+    color: #1e3a8a;
+
+    margin-top: 30px;
+
+    padding-bottom: 8px;
+
+    border-bottom: 2px solid #e2e8f0;
+}
+
+
+/* =====================================================
+   FINAL REPORT TABLE
+===================================================== */
+
+#final-report table {
+    margin-top: 15px;
+
+    background: white;
+
+    border: 1px solid #cbd5e1;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+}
+
+#final-report th {
+    background: #1e3a8a;
+
+    color: white;
+
+    padding: 13px;
+
+    text-align: center;
+}
+
+#final-report td {
+    padding: 12px;
+
+    text-align: center;
+
+    border-color: #e2e8f0;
+}
+
+#final-report tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+#final-report tbody tr:hover {
+    background: #eef2ff;
+}
+
+
+/* =====================================================
+   STRENGTHS / IMPROVEMENTS
+===================================================== */
+
+#final-report ul {
+    padding-left: 25px;
+}
+
+#final-report li {
+    margin-bottom: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   FINAL REPORT BUTTON
+===================================================== */
+
+#final-report button {
+    display: block;
+
+    margin: 30px auto;
+
+    background: #4f46e5;
+
+    color: white;
+
+    padding: 14px 25px;
+
+    font-size: 16px;
+}
+
+#final-report button:hover {
+    background: #4338ca;
+}
+
+
+/* =====================================================
+   DIVIDERS
+===================================================== */
+
+hr {
+    border: none;
+
+    border-top: 1px solid #e2e8f0;
+
+    margin: 30px 0;
+}
+
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 700px) {
+
+    #candidate-section,
+    #interview-section {
+
+        width: 95%;
+
+        padding: 22px;
+
+        margin: 20px auto;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    #candidate-section h1 {
+        font-size: 30px;
+    }
+
+    #question {
+        font-size: 17px;
+    }
+
+    #answer-button,
+    #stop-button,
+    #next-button {
+        width: 100%;
+
+        margin: 5px 0;
+    }
+
+    #final-report h1:nth-of-type(2) {
+        font-size: 42px;
+    }
+
+    #final-report table {
+        font-size: 12px;
+    }
+
+    #final-report th,
+    #final-report td {
+        padding: 7px;
+    }
+}
+/* =====================================================
+   FINAL REPORT DASHBOARD
+===================================================== */
+
+#final-report {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* =====================================================
+   REPORT HEADER
+===================================================== */
+
+.report-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.report-label {
+    color: #4f46e5;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.report-header h1 {
+    font-size: 38px;
+    margin-bottom: 8px;
+}
+
+.report-subtitle {
+    color: #64748b;
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   CANDIDATE CARD
+===================================================== */
+
+.candidate-card {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    margin-bottom: 25px;
+}
+
+.candidate-item {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.candidate-label {
+    font-size: 13px;
+
+    color: #64748b;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =====================================================
+   OVERALL SCORE CARD
+===================================================== */
+
+.overall-card {
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #e0e7ff
+        );
+
+    border: 1px solid #c7d2fe;
+
+    border-radius: 20px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.score-label {
+    color: #4338ca;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.overall-score {
+    font-size: 64px;
+
+    font-weight: 800;
+
+    color: #3730a3;
+
+    line-height: 1;
+
+    margin: 15px 0 5px;
+}
+
+.score-out-of {
+    color: #64748b;
+
+    font-size: 15px;
+}
+
+.performance-badge {
+    display: inline-block;
+
+    margin-top: 18px;
+
+    padding: 8px 18px;
+
+    border-radius: 30px;
+
+    background: #16a34a;
+
+    color: white;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   SCORE CARDS
+===================================================== */
+
+.score-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 35px;
+}
+
+.score-card {
+    background: white;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 16px;
+
+    padding: 22px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 18px
+        rgba(15, 23, 42, 0.06);
+}
+
+.score-card-icon {
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+.score-card h3 {
+    margin: 5px 0;
+
+    color: #334155;
+}
+
+.component-score {
+    font-size: 32px;
+
+    font-weight: 800;
+
+    color: #4f46e5;
+
+    margin: 10px 0 3px;
+}
+
+.score-card p {
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =====================================================
+   SCORE BAR
+===================================================== */
+
+.score-bar {
+    width: 100%;
+
+    height: 8px;
+
+    background: #e2e8f0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.score-bar-fill {
+    height: 100%;
+
+    background: #4f46e5;
+
+    border-radius: 20px;
+
+    transition:
+        width 0.8s ease;
+}
+
+
+/* =====================================================
+   REPORT SECTIONS
+===================================================== */
+
+.report-section {
+    margin-top: 35px;
+
+    margin-bottom: 30px;
+}
+
+.report-section h2 {
+    margin-bottom: 5px;
+}
+
+.section-description {
+    color: #64748b;
+
+    margin-top: 0;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-container {
+    overflow-x: auto;
+
+    margin-top: 18px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e2e8f0;
+}
+
+#final-report table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: white;
+}
+
+#final-report th {
+    background: #1e3a8a;
+
+    color: white;
+
+    padding: 14px;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+#final-report td {
+    padding: 13px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #e2e8f0;
+
+    font-size: 14px;
+}
+
+#final-report tbody tr:hover {
+    background: #f8fafc;
+}
+
+.category-badge {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   FEEDBACK GRID
+===================================================== */
+
+.feedback-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+
+    margin-top: 30px;
+}
+
+.feedback-card {
+    border-radius: 16px;
+
+    padding: 25px;
+
+    border: 1px solid #e2e8f0;
+}
+
+.strengths-card {
+    background: #f0fdf4;
+
+    border-color: #bbf7d0;
+}
+
+.improvement-card {
+    background: #fff7ed;
+
+    border-color: #fed7aa;
+}
+
+.feedback-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.feedback-title span {
+    font-size: 26px;
+}
+
+.feedback-title h2 {
+    margin: 0;
+
+    border: none;
+}
+
+.feedback-card ul {
+    margin: 0;
+
+    padding-left: 22px;
+}
+
+.feedback-card li {
+    margin-bottom: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   RECOMMENDATION
+===================================================== */
+
+.recommendation-card {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border-radius: 16px;
+
+    background: #eff6ff;
+
+    border: 1px solid #bfdbfe;
+}
+
+.recommendation-icon {
+    font-size: 30px;
+}
+
+.recommendation-card h2 {
+    margin-top: 0;
+
+    border: none;
+}
+
+.recommendation-card p {
+    margin-bottom: 0;
+
+    color: #475569;
+}
+
+
+/* =====================================================
+   SCORING WEIGHTS
+===================================================== */
+
+.weights-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 18px;
+}
+
+.weight-item {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 16px;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+}
+
+.weight-item span {
+    font-size: 20px;
+
+    font-weight: 800;
+
+    color: #4f46e5;
+}
+
+
+/* =====================================================
+   EVALUATION NOTE
+===================================================== */
+
+.evaluation-note {
+    margin-top: 30px;
+
+    padding: 20px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    color: #475569;
+}
+
+.evaluation-note strong {
+    color: #334155;
+}
+
+.evaluation-note p {
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+
+/* =====================================================
+   NEW INTERVIEW BUTTON
+===================================================== */
+
+.new-interview-button {
+    display: block;
+
+    margin: 35px auto 10px;
+
+    padding: 14px 28px;
+
+    background: #4f46e5;
+
+    color: white;
+
+    font-size: 16px;
+}
+
+.new-interview-button:hover {
+    background: #4338ca;
+}
+
+
+/* =====================================================
+   FINAL REPORT RESPONSIVE
+===================================================== */
+
+@media (max-width: 750px) {
+
+    .candidate-card {
+        grid-template-columns: 1fr;
+    }
+
+    .score-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feedback-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .weights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .overall-score {
+        font-size: 50px;
+    }
+
+    .report-header h1 {
+        font-size: 30px;
+    }
+
+    .recommendation-card {
+        flex-direction: column;
+    }
+}

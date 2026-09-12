@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AI Interview Evaluator
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+    <style>
+        .instructions-card {
+            margin: 24px 0;
+            padding: 20px 22px;
+            border-radius: 16px;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .instructions-card h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .instructions-card ul {
+            margin: 0;
+            padding-left: 22px;
+        }
+
+        .instructions-card li {
+            margin: 8px 0;
+        }
+
+        .evaluation-loading {
+            margin: 20px 0;
+            padding: 16px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .loading-spinner {
+            width: 18px;
+            height: 18px;
+            border: 3px solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            animation: interview-spin 0.8s linear infinite;
+        }
+
+        @keyframes interview-spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .instructions-card {
+                padding: 16px;
+            }
+
+            #video {
+                width: 100%;
+                height: auto;
+                max-width: 500px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         CANDIDATE SECTION
+    =================================================== -->
+
+    <div id="candidate-section">
+
+        <h1>
+            🤖 AI Interview Evaluator
+        </h1>
+
+        <p>
+            Welcome to your AI-powered virtual interview.
+            Your answers will be evaluated using NLP,
+            voice analysis and facial-expression signals.
+        </p>
+
+
+        <h2>
+            👤 Candidate Information
+        </h2>
+
+
+        <div
+            id="interview-instructions"
+            class="instructions-card"
+        >
+
+            <h3>
+                📋 Before You Begin
+            </h3>
+
+            <ul>
+
+                <li>
+                    🎤 Speak clearly and answer each question in English.
+                </li>
+
+                <li>
+                    📷 Keep your face visible and centered in the camera.
+                </li>
+
+                <li>
+                    ⏱️ Take your time and give a complete answer.
+                </li>
+
+                <li>
+                    🔊 Make sure your microphone is working before you start.
+                </li>
+
+                <li>
+                    💡 Your answer, voice and facial-expression signals will
+                    be analyzed as part of this experimental assessment.
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <label for="name">
+            Candidate Name
+        </label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+        >
+
+
+        <label for="role">
+            Interview Role
+        </label>
+
+        <select id="role">
+
+            <option value="python">
+                Python Developer
+            </option>
+
+            <option value="ml">
+                Machine Learning Engineer
+            </option>
+
+            <option value="data">
+                Data Analyst
+            </option>
+
+            <option value="sql">
+                SQL Developer
+            </option>
+
+            <option value="software">
+                Software Developer
+            </option>
+
+        </select>
+
+
+        <button
+            onclick="startInterview()"
+        >
+            🚀 Start Interview
+        </button>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         INTERVIEW SECTION
+    =================================================== -->
+
+    <div
+        id="interview-section"
+        style="display: none;"
+    >
+
+        <h1>
+            🎯 Virtual Interview
+        </h1>
+
+
+        <!-- Camera -->
+
+        <h3>
+            📷 Camera
+        </h3>
+
+
+        <video
+            id="video"
+            autoplay
+            muted
+        ></video>
+
+
+        <p id="camera-status">
+            Camera: Starting...
+        </p>
+
+
+        <!-- Question -->
+
+        <h2 id="question-number">
+            Question 1 of 5
+        </h2>
+
+
+        <p id="question"></p>
+
+
+        <!-- Recording controls -->
+
+        <button
+            id="answer-button"
+            onclick="startRecording()"
+        >
+            🎤 Start Answer
+        </button>
+
+
+        <button
+            id="stop-button"
+            onclick="stopRecording()"
+            style="display: none;"
+        >
+            ⏹️ Stop Recording
+        </button>
+
+
+        <p id="recording-status">
+            Status: Not Recording
+        </p>
+
+
+        <!-- Audio -->
+
+        <audio
+            id="audio-player"
+            controls
+            style="display: none;"
+        ></audio>
+
+
+        <!-- Evaluation loading -->
+
+        <div
+            id="evaluation-loading"
+            class="evaluation-loading"
+            style="display: none;"
+            aria-live="polite"
+        >
+
+            <span class="loading-spinner"></span>
+
+            <span>
+                🤖 Evaluating your answer... Please wait.
+            </span>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             EVALUATION RESULT
+        =================================================== -->
+
+        <div
+            id="evaluation-result"
+            style="display: none;"
+        >
+
+            <h3>
+                🤖 AI Evaluation
+            </h3>
+
+
+            <p>
+                <strong>
+                    Transcript:
+                </strong>
+            </p>
+
+
+            <p id="transcript"></p>
+
+
+            <p>
+                <strong>
+                    📝 Answer Score:
+                </strong>
+
+                <span id="answer-score">
+                </span>
+
+                / 100
+            </p>
+
+
+
+            <!-- Voice -->
+
+            <h3>
+                🎤 Voice Analysis
+            </h3>
+
+
+            <p>
+                <strong>
+                    Duration:
+                </strong>
+
+                <span id="voice-duration">
+                </span>
+
+                seconds
+            </p>
+
+
+            <p>
+                <strong>
+                    Speaking Rate:
+                </strong>
+
+                <span id="speaking-rate">
+                </span>
+
+                words/min
+            </p>
+
+
+            <p>
+                <strong>
+                    Pause Count:
+                </strong>
+
+                <span id="pause-count">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>
+                    Average Pause Duration:
+                </strong>
+
+                <span id="average-pause">
+                </span>
+
+                seconds
+            </p>
+
+
+            <p>
+                <strong>
+                    Average Energy:
+                </strong>
+
+                <span id="average-energy">
+                </span>
+            </p>
+
+
+
+            <!-- Face -->
+
+            <h3>
+                📷 Facial Analysis
+            </h3>
+
+
+            <p>
+                <strong>
+                    Average Smile Signal:
+                </strong>
+
+                <span id="face-smile">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>
+                    Average Blink Signal:
+                </strong>
+
+                <span id="face-blink">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>
+                    Average Brow Signal:
+                </strong>
+
+                <span id="face-brow">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>
+                    Frames Analyzed:
+                </strong>
+
+                <span id="face-frames">
+                </span>
+            </p>
+
+        </div>
+
+
+
+        <!-- Next / Finish -->
+
+        <button
+            id="next-button"
+            onclick="nextQuestion()"
+        >
+            ➡️ Next Question
+        </button>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+
+</body>
+
+</html>
